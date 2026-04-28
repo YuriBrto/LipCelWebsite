@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap');
+
+// ─── TOKENS ───────────────────────────────────────────
+:root {
+  --blue-lipcel: #0D5CFF;
+  --blue-dark:   #0A47CC;
+  --bg-hero:     #EEF3FF;
+  --bg-default:  #F5F7FA;
+  --text-main:   #1D1D1F;
+  --white:       #ffffff;
+
+  // Cores imersivas por produto
+  --bg-neutro:   #E8F4FF;
+  --bg-maca:     #FFF0F3;
+  --bg-limao:    #FFFBE8;
+  --bg-clear:    #F0F5FF;
+
+  --glow-neutro: rgba(13, 92, 255, 0.28);
+  --glow-maca:   rgba(220, 38, 38, 0.32);
+  --glow-limao:  rgba(234, 179, 8, 0.42);
+  --glow-clear:  rgba(13, 92, 255, 0.18);
+
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+// ─── RESET ────────────────────────────────────────────
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background-color: var(--bg-default);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ─── SCROLLBAR ────────────────────────────────────────
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 92, 255, 0.3);
+  border-radius: 4px;
+}
+
+// ─── UTILITIES ────────────────────────────────────────
+.container {
+  padding: 0 24px;
+  width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ─── GLASS ────────────────────────────────────────────
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+// ─── BOTÕES GLOBAIS ───────────────────────────────────
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--blue-lipcel);
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 8px 24px rgba(13, 92, 255, 0.3);
+
+  &:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 14px 32px rgba(13, 92, 255, 0.42);
+    transform: translateY(-1px);
+  }
+  &:active { transform: scale(0.97); }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 28px;
+  background: transparent;
+  color: var(--text-main);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+
+  &:hover {
+    border-color: var(--blue-lipcel);
+    color: var(--blue-lipcel);
+    transform: translateY(-1px);
+  }
+  &:active { transform: scale(0.97); }
+}
+
+// ─── ANIMAÇÕES GLOBAIS ────────────────────────────────
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatLoop {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30%       { transform: translateY(-18px) rotate(1.5deg); }
+  70%       { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes bubbleRise {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-110vh) scale(0.5); opacity: 0; }
+}
+
+@keyframes blobPulse {
+  from { transform: scale(1) translateY(0); }
+  to   { transform: scale(1.18) translateY(-16px); }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-85vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulseRing {
+  0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(10px); opacity: 0.35; }
+}
+
+@keyframes shinePass {
+  0%   { left: -60%; }
+  100% { left: 160%; }
+}
